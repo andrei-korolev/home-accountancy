@@ -1,0 +1,3 @@
+.icon_{{className}}() {
+    background: url("{{dataURISchema}}") no-repeat;
+}

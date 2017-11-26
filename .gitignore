@@ -1,0 +1,17 @@
+# compiled output
+/dist
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.awcache/
+
+# Styles
+/src/assets/styles/common/base.css
+
+package-lock.json
+/target/
+/coverage/
+/dll/
