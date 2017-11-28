@@ -1,9 +1,12 @@
-import {BrowserModule, HammerGestureConfig} from "@angular/platform-browser";
-import {AppComponent} from "./app.component";
-import {createInputTransfer, createNewHosts, removeNgStyles} from "@angularclass/hmr";
 import {ApplicationRef, NgModule} from "@angular/core";
-import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule, HammerGestureConfig} from "@angular/platform-browser";
+import {createInputTransfer, createNewHosts, removeNgStyles} from "@angularclass/hmr";
+import {HttpClientModule} from "@angular/common/http";
+
+import {AppComponent} from "./app.component";
+import {AppRoutingModule} from "./app-routing.module";
+import {AuthModule} from "./modules/auth/auth.module";
 
 export class MyHammerConfig extends HammerGestureConfig  {
     overrides = <any>{
@@ -12,13 +15,16 @@ export class MyHammerConfig extends HammerGestureConfig  {
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
-    ],
     imports: [
         BrowserModule,
         HttpClientModule,
         BrowserAnimationsModule,
+
+        AuthModule,
+        AppRoutingModule
+    ],
+    declarations: [
+        AppComponent,
     ],
     bootstrap: [
         AppComponent

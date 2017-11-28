@@ -1,0 +1,9 @@
+.font-face(@file-name, @font-family, @font-weight: 400, @font-style: normal) {
+    @font-face {
+        font-family: "@{font-family}";
+        src: url("../../fonts/@{file-name}.woff2") format('woff2'),
+        url("../../fonts/@{file-name}.woff") format('woff');
+        font-weight: @font-weight;
+        font-style: @font-style;
+    }
+}

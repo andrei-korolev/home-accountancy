@@ -3,8 +3,25 @@
 @page-max-width: 1240px;
 
 // Portlet
-@portlet-margin: 20px;
+@portlet-padding: 30px;
 
 // Sources
 @src-images: "../../images";
 @src-icons: "@{src-images}/other-images";
+
+// Border
+@border: 1px solid @gray-97;
+@border-blue: 1px solid @blue-52;
+@border-radius: 10px;
+
+// Transition
+@transition-time: 0.2s;
+@transition-box-shadow: ~"box-shadow @{transition-time}";
+@transition-color: ~"color @{transition-time}";
+@transition-color-border: ~"border-color @{transition-time}";
+@transition-background-color: ~"background-color @{transition-time}";
+@transition-opacity: ~"opacity @{transition-time}";
+@transition-button: ~"background-color @{transition-time}, color @{transition-time}";
+@transition-slide: 200ms cubic-bezier(0, 1, 0.5, 1);
+@transition-max-height:  ~"max-height @{transition-time}";
+@transition-transform: ~"transform @{transition-time}";

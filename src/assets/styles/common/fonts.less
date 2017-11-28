@@ -1,15 +1,7 @@
 // Fonts
-@font-awesome: fontawesome;
-@font-basic: @font-awesome, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-open-sans: open-sans-bold;
+@font-basic: @font-open-sans, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-.font-face(@file-name, @font-family, @font-weight: 400, @font-style: normal) {
-    @font-face {
-        font-family: "@{font-family}";
-        src: url("../../fonts/@{file-name}.woff2") format('woff2'),
-             url("../../fonts/@{file-name}.woff") format('woff');
-        font-weight: @font-weight;
-        font-style: @font-style;
-    }
-}
-
-.font-face(fontawesome-webfont, @font-awesome);
+.font-face(open-sans-regular, @font-open-sans);
+.font-face(open-sans-bold, @font-open-sans, 700);
+.font-face(open-sans-light, @font-open-sans, 300);
