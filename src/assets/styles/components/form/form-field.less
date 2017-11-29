@@ -10,7 +10,22 @@
         cursor: pointer;
     }
 
+    &._required &__label {
+
+        &:after {
+            content: "*";
+            margin-left: 3px;
+            color: @red-ff;
+        }
+    }
+
     &__field {
         width: 100%;
+    }
+
+    &__message {
+        margin-top: 5px;
+        font-size: 12px;
+        color: @red-ff;
     }
 }

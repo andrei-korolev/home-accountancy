@@ -1,32 +1,81 @@
-<div class="auth-main">
+<div class="auth-main cssload-wrapper">
     <p class="auth-main__subtitle">Войдите для работы</p>
-    <div class="auth-main__content">
+    <ak-cssload *ngIf="loading"></ak-cssload>
+    <div class="auth-main__content" [class._visibility-hidden]="loading">
         <div class="auth-main__form">
-            <form class="form">
+            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="form">
                 <div class="form__row">
-                    <div class="form-field">
-                        <label for="email" class="form-field__label">Email</label>
+                    <div class="form-field _required">
+                        <label for="form-email" class="form-field__label">Email</label>
                         <div class="form-field__field">
                             <div class="form-text">
-                                <input type="text" id="email" class="form-text__input" name="email" placeholder="Введите ваш email">
+                                <input
+                                    formControlName="email"
+                                    type="email"
+                                    id="form-email"
+                                    class="form-text__input"
+                                    name="email"
+                                    placeholder="Введите email"
+                                >
                             </div>
                         </div>
+                        <div *ngIf="formLogin.get('email').invalid && formLogin.get('email').touched" class="form-field__message">
+                            <span
+                                *ngIf="formLogin.get('email').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Email не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formLogin.get('email').hasError('pattern')"
+                                class="form-field__message-text"
+                            >
+                                Введите корректный email
+                            </span>
+                        </div>
+
                     </div>
                 </div>
                 <div class="form__row">
-                    <div class="form-field">
-                        <label for="password" class="form-field__label">Password</label>
+                    <div class="form-field _required">
+                        <label for="form-password" class="form-field__label">Пароль</label>
                         <div class="form-field__field">
                             <div class="form-text">
-                                <input type="text" id="password" class="form-text__input" name="email" placeholder="Введите ваш пароль">
+                                <input
+                                    formControlName="password"
+                                    type="password"
+                                    id="form-password"
+                                    class="form-text__input"
+                                    name="email"
+                                    placeholder="Введите пароль"
+                                >
                             </div>
                         </div>
+                        <div *ngIf="formLogin.get('password').invalid && formLogin.get('password').touched" class="form-field__message">
+                            <span
+                                *ngIf="formLogin.get('password').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Пароль не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formLogin.get('password').hasError('minlength')"
+                                class="form-field__message-text"
+                            >
+                                Минимальная длина пароля - {{formLogin.get('password').errors.minlength.requiredLength}} мимволов. Сейчас - {{formLogin.get('password').errors.minlength.actualLength}}
+                            </span>
+                        </div>
                     </div>
+                </div>
+                <div class="auth-main__toolbar">
+                    <button
+                        [disabled]="formLogin.invalid"
+                        class="button">Войти</button>
+                </div>
+                <div class="auth-main__message">
+                    <ak-message *ngIf="message" [type]="message.type" [text]="message.text"></ak-message>
                 </div>
             </form>
-            <div class="auth-main__toolbar">
-                <button class="button">Войти</button>
-            </div>
         </div>
     </div>
     <footer class="auth-main__footer">

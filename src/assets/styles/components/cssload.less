@@ -1,0 +1,67 @@
+/* Cssload */
+.cssload {
+    &-wrapper {
+        position: relative;
+    }
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 262px;
+    height: 262px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+
+    &__ball {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        margin-top: 131px;
+        margin-left: 131px;
+        border-radius: 9.5px;
+        background: rgb(27,188,155);
+        animation: cssload-juggle 1.885s linear infinite;
+
+        &:nth-child(1) {
+            animation-delay: -0.625s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -1.26s;
+        }
+    }
+}
+
+@keyframes cssload-juggle {
+    0% {
+        transform: translateX(0px) translateY(0px);
+    }
+    12.5% {
+        transform: translateX(24.5px) translateY(-50px) scale(1.1);
+        background: rgb(54,215,183);
+    }
+    25% {
+        transform: translateX(48px) translateY(0px);
+        animation-timing-function: ease-out;
+    }
+    37.5% {
+        transform: translateX(24.5px) translateY(50px);
+    }
+    50% {
+        transform: translateX(0px) translateY(0px);
+    }
+    62.5% {
+        transform: translateX(-24.5px) translateY(-50px) scale(1.1);
+        animation-timing-function: ease-in;
+    }
+    75% {
+        transform: translateX(-48px) translateY(0px);
+        animation-timing-function: ease-out;
+    }
+    87.5% {
+        transform: translateX(-24.5px) translateY(50px);
+    }
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+}

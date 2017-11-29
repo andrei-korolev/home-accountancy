@@ -1,13 +1,21 @@
 import {NgModule} from "@angular/core";
+import {ReactiveFormsModule} from "@angular/forms";
 
-import {LogoComponent} from "../../components/logo/logo.component";
+import {CssloadComponent} from "../../components/cssload/cssload.component";
+import {MessageComponent} from "../../components/message/message.component";
 
 @NgModule({
+    imports: [
+        ReactiveFormsModule,
+    ],
     declarations: [
-        LogoComponent
+        CssloadComponent,
+        MessageComponent
     ],
     exports: [
-        LogoComponent
+        CssloadComponent,
+        MessageComponent,
+        ReactiveFormsModule,
     ]
 })
 export class SharedModule {}

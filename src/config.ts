@@ -11,5 +11,6 @@ const ROUTES: any = {
 };
 
 export const ENVIRONMENT: any = {
-    routes: ROUTES
+    routes: ROUTES,
+    serverBase: "http://localhost:4200"
 };

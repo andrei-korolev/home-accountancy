@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthModule} from "./modules/auth/auth.module";
+import {UsersService} from "./common/services/users.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
     overrides = <any>{
@@ -25,6 +26,9 @@ export class MyHammerConfig extends HammerGestureConfig  {
     ],
     declarations: [
         AppComponent,
+    ],
+    providers: [
+        UsersService
     ],
     bootstrap: [
         AppComponent
