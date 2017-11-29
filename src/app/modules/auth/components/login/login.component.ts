@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
+import {AuthService} from "../../../../common/services/auth.service";
 import {MessageModel} from "../../../../components/message/message.model";
 import {UsersService} from "../../../../common/services/users.service";
 import {User} from "../../../../common/models/user.model";
@@ -18,6 +20,8 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
         private usersService: UsersService
     ) {}
 
@@ -55,6 +59,11 @@ export class LoginComponent implements OnInit {
                }
 
                this.message = null;
+
+               window.localStorage.setItem("user", JSON.stringify(user));
+
+               this.authService.login();
+               // this.router.navigate([]);
            }, (error: Response) => {
                alert(error);
            });

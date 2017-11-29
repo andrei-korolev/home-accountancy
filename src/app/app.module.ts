@@ -7,6 +7,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthModule} from "./modules/auth/auth.module";
+import {AuthService} from "./common/services/auth.service";
 import {UsersService} from "./common/services/users.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
@@ -28,6 +29,7 @@ export class MyHammerConfig extends HammerGestureConfig  {
         AppComponent,
     ],
     providers: [
+        AuthService,
         UsersService
     ],
     bootstrap: [
