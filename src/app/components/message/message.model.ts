@@ -1,6 +1,8 @@
+import {MessageType} from "./message.type";
+
 export class MessageModel {
     constructor(
-        public type: string,
+        public type: MessageType,
         public text: string
     ) {}
 }

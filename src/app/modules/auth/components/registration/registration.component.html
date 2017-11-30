@@ -1,1 +1,116 @@
-registration
+<div class="auth-main cssload-wrapper">
+    <p class="auth-main__subtitle">Регистрация для получения доступа</p>
+    <ak-cssload *ngIf="loading"></ak-cssload>
+    <div class="auth-main__content" [class._visibility-hidden]="loading">
+        <div class="auth-main__form">
+            <form [formGroup]="formRegistration" (ngSubmit)="onSubmit()" class="form">
+                <div class="form__row">
+                    <div class="form-field _required">
+                        <label for="form-name" class="form-field__label">Имя</label>
+                        <div class="form-field__field">
+                            <div class="form-text">
+                                <input
+                                    formControlName="name"
+                                    type="text"
+                                    id="form-name"
+                                    class="form-text__input"
+                                    name="email"
+                                    placeholder="Введите имя"
+                                >
+                            </div>
+                        </div>
+                        <div *ngIf="formRegistration.get('name').invalid && formRegistration.get('name').touched" class="form-field__message">
+                            <span
+                                *ngIf="formRegistration.get('name').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Имя не может быть пустым
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form-field _required">
+                        <label for="form-email" class="form-field__label">Email</label>
+                        <div class="form-field__field">
+                            <div class="form-text">
+                                <input
+                                    formControlName="email"
+                                    type="email"
+                                    id="form-email"
+                                    class="form-text__input"
+                                    name="email"
+                                    placeholder="Введите email"
+                                >
+                            </div>
+                        </div>
+                        <div *ngIf="formRegistration.get('email').invalid && formRegistration.get('email').touched" class="form-field__message">
+                            <span
+                                *ngIf="formRegistration.get('email').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Email не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formRegistration.get('email').hasError('pattern')"
+                                class="form-field__message-text"
+                            >
+                                Введите корректный email
+                            </span>
+                            <span
+                                *ngIf="formRegistration.get('email').hasError('forbiddenEmail')"
+                                class="form-field__message-text"
+                            >
+                                Email уже существует
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form__row">
+                    <div class="form-field _required">
+                        <label for="form-password" class="form-field__label">Пароль</label>
+                        <div class="form-field__field">
+                            <div class="form-text">
+                                <input
+                                    formControlName="password"
+                                    type="password"
+                                    id="form-password"
+                                    class="form-text__input"
+                                    name="email"
+                                    placeholder="Введите пароль"
+                                >
+                            </div>
+                        </div>
+                        <div *ngIf="formRegistration.get('password').invalid && formRegistration.get('password').touched" class="form-field__message">
+                            <span
+                                *ngIf="formRegistration.get('password').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Пароль не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formRegistration.get('password').hasError('minlength')"
+                                class="form-field__message-text"
+                            >
+                                Минимальная длина пароля - {{formRegistration.get('password').errors.minlength.requiredLength}} мимволов. Сейчас - {{formRegistration.get('password').errors.minlength.actualLength}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="auth-main__toolbar">
+                    <button
+                        [disabled]="formRegistration.invalid"
+                        class="button">Зарегистрироваться</button>
+                </div>
+                <div class="auth-main__message">
+                    <ak-message *ngIf="message" [type]="message.type" [text]="message.text"></ak-message>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="auth-main__footer">
+        <span class="auth-main__footer-text">Уже есть аккаунт?</span>
+        <a routerLink="/login" class="auth-main__footer-link link">Войти!</a>
+    </footer>
+</div>

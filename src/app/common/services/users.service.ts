@@ -19,4 +19,12 @@ export class UsersService {
                 return Observable.throw(error.statusText);
             });
     }
+
+    public createNewUser(user: User): Observable<User> {
+        return this.http
+            .post(`${ENVIRONMENT.serverBase}/users`, user)
+            .catch((error: Response) => {
+                return Observable.throw(error.statusText);
+            });
+    }
 }
