@@ -8,6 +8,7 @@ import {AppComponent} from "./app.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthModule} from "./modules/auth/auth.module";
 import {AuthService} from "./common/services/auth.service";
+import {SystemModule} from "./modules/system/system.module";
 import {UsersService} from "./common/services/users.service";
 
 export class MyHammerConfig extends HammerGestureConfig  {
@@ -18,12 +19,13 @@ export class MyHammerConfig extends HammerGestureConfig  {
 
 @NgModule({
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         HttpClientModule,
-        BrowserAnimationsModule,
 
+        AppRoutingModule,
         AuthModule,
-        AppRoutingModule
+        SystemModule
     ],
     declarations: [
         AppComponent,
