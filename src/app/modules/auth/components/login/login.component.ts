@@ -1,6 +1,7 @@
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HttpErrorResponse} from "@angular/common/http";
 import {Subscription} from "rxjs/Subscription";
 
 import {AuthService} from "../../../../common/services/auth.service";
@@ -80,7 +81,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
                this.authService.login();
                // this.router.navigate([]);
-           }, (error: Response) => {
+           }, (error: HttpErrorResponse) => {
                alert(error);
            });
     }

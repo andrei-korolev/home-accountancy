@@ -12,6 +12,11 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
 
+    &._field {
+        width: 45px;
+        height: 45px;
+    }
+
     &__ball {
         position: absolute;
         width: 18px;
@@ -30,38 +35,90 @@
             animation-delay: -1.26s;
         }
     }
+
+    &._field &__ball {
+        width: 3px;
+        height: 3px;
+        margin-top: 22px;
+        margin-left: 22px;
+        border-radius: 1.5px;
+        background: rgb(27,188,155);
+        animation: cssload-juggle-field 2.42s linear infinite;
+
+        &:nth-child(1) {
+            animation-delay: -0.81s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -1.61s;
+        }
+    }
 }
 
 @keyframes cssload-juggle {
     0% {
-        transform: translateX(0px) translateY(0px);
+        transform: translateX(0) translateY(0);
     }
     12.5% {
-        transform: translateX(24.5px) translateY(-50px) scale(1.1);
+        transform: translateX(24.5px) translateY(-50) scale(1.1);
         background: rgb(54,215,183);
     }
     25% {
-        transform: translateX(48px) translateY(0px);
+        transform: translateX(48px) translateY(0);
         animation-timing-function: ease-out;
     }
     37.5% {
-        transform: translateX(24.5px) translateY(50px);
+        transform: translateX(24.5px) translateY(50);
     }
     50% {
-        transform: translateX(0px) translateY(0px);
+        transform: translateX(0) translateY(0);
     }
     62.5% {
-        transform: translateX(-24.5px) translateY(-50px) scale(1.1);
+        transform: translateX(-24.5px) translateY(-50) scale(1.1);
         animation-timing-function: ease-in;
     }
     75% {
-        transform: translateX(-48px) translateY(0px);
+        transform: translateX(-48px) translateY(0);
         animation-timing-function: ease-out;
     }
     87.5% {
-        transform: translateX(-24.5px) translateY(50px);
+        transform: translateX(-24.5px) translateY(50);
     }
     100% {
-        transform: translateX(0px) translateY(0px);
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes cssload-juggle-field {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    12.5% {
+        transform: translateX(4.5px) translateY(-9px) scale(1.1);
+        background: rgb(54,215,183);
+    }
+    25% {
+        transform: translateX(8px) translateY(0);
+        animation-timing-function: ease-out;
+    }
+    37.5% {
+        transform: translateX(4.5px) translateY(9px);
+    }
+    50% {
+        transform: translateX(0) translateY(0);
+    }
+    62.5% {
+        transform: translateX(-4.5px) translateY(-9px) scale(1.1);
+        animation-timing-function: ease-in;
+    }
+    75% {
+        transform: translateX(-8px) translateY(0);
+        animation-timing-function: ease-out;
+    }
+    87.5% {
+        transform: translateX(-4.5px) translateY(9px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
     }
 }

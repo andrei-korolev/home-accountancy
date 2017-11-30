@@ -38,10 +38,13 @@
                                     formControlName="email"
                                     type="email"
                                     id="form-email"
-                                    class="form-text__input"
+                                    class="form-text__input _email"
                                     name="email"
                                     placeholder="Введите email"
                                 >
+                                <div class="form-text__loading">
+                                    <ak-cssload [hidden]="!checkingEmail" field="true"></ak-cssload>
+                                </div>
                             </div>
                         </div>
                         <div *ngIf="formRegistration.get('email').invalid && formRegistration.get('email').touched" class="form-field__message">
@@ -100,7 +103,7 @@
                 </div>
                 <div class="auth-main__toolbar">
                     <button
-                        [disabled]="formRegistration.invalid"
+                        [disabled]="formRegistration.invalid || checkingEmail"
                         class="button">Зарегистрироваться</button>
                 </div>
                 <div class="auth-main__message">

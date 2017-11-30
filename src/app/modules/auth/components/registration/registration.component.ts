@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from "@angular/forms";
+import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 
@@ -12,10 +13,12 @@ import {User} from "../../../../common/models/user.model";
     templateUrl: "./registration.component.html"
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
+    public checkingEmail: boolean;
     public formRegistration: FormGroup;
     public loading: boolean;
 
-    private subscriptionUsersService: Subscription;
+    private subscriptionCreateNewUser: Subscription;
+    private subscriptionGetUserByEmail: Subscription;
 
     constructor(
         private fb: FormBuilder,
@@ -40,8 +43,12 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        if (this.subscriptionUsersService) {
-            this.subscriptionUsersService.unsubscribe();
+        if (this.subscriptionCreateNewUser) {
+            this.subscriptionCreateNewUser.unsubscribe();
+        }
+
+        if (this.subscriptionGetUserByEmail) {
+            this.subscriptionGetUserByEmail.unsubscribe();
         }
     }
 
@@ -56,7 +63,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
         this.loading = true;
 
-        this.subscriptionUsersService = this.usersService.createNewUser(user)
+        this.subscriptionCreateNewUser = this.usersService.createNewUser(user)
             .subscribe(() => {
                 this.loading = false;
 
@@ -65,16 +72,17 @@ export class RegistrationComponent implements OnInit, OnDestroy {
                         nowCanLogin: true
                     }
                 });
-            }, (error: Response) => {
+            }, (error: HttpErrorResponse) => {
                 alert(error);
             });
     }
 
     //TODO: add debounce
     public forbiddenEmail(control: AbstractControl): Promise<ValidationErrors> {
-        return new Promise((resolve, reject) => {
+        this.checkingEmail = true;
 
-            this.usersService.getUserByEmail(control.value)
+        return new Promise((resolve, reject) => {
+            this.subscriptionGetUserByEmail = this.usersService.getUserByEmail(control.value)
                 .subscribe((user: User) => {
                     if (user) {
                         resolve({
@@ -83,6 +91,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
                     } else {
                         resolve(null);
                     }
+
+                    this.checkingEmail = false;
                 });
         });
     }
