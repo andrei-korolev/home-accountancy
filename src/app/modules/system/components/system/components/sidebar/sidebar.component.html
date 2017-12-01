@@ -1,10 +1,12 @@
 <aside class="sidebar">
     <nav class="sidebar__navigation">
         <ul class="sidebar__list">
-            <li class="sidebar__item">
-                <a href="" class="sidebar__link">
-                    <i class="sidebar__link-icon"></i>
-                    <span class="sidebar__link-text">Счёт</span>
+            <li *ngFor="let item of navigation" class="sidebar__item">
+                <a [routerLink]="item.url" routerLinkActive="_active" class="sidebar__link">
+                    <i class="sidebar__link-icon">
+                        <svg><use [attr.xlink:href]="'#icon-' + item.icon"></use></svg>
+                    </i>
+                    <span class="sidebar__link-text">{{item.label}}</span>
                 </a>
             </li>
         </ul>

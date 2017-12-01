@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 
 import {BillPageComponent} from "./components/bill-page/bill-page.component";
 import {HistoryPageComponent} from "./components/history-page/history-page.component";
+import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
 import {PlanningPageComponent} from "./components/planning-page/planning-page.component";
 import {RecordsPageComponent} from "./components/records-page/records-page.component";
@@ -18,6 +19,7 @@ import {SystemRoutingModule} from "./system-routing.module";
     declarations: [
         BillPageComponent,
         HistoryPageComponent,
+        LayoutPageComponent,
         MainHeaderComponent,
         PlanningPageComponent,
         RecordsPageComponent,
