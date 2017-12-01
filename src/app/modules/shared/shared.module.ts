@@ -1,9 +1,10 @@
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 
-import {CssloadComponent} from "../../components/cssload/cssload.component";
-import {MessageComponent} from "../../components/message/message.component";
 import {CommonModule} from "@angular/common";
+import {CssloadComponent} from "../../components/cssload/cssload.component";
+import {LogoComponent} from "../../components/logo/logo.component";
+import {MessageComponent} from "../../components/message/message.component";
 
 @NgModule({
     imports: [
@@ -12,13 +13,15 @@ import {CommonModule} from "@angular/common";
     ],
     declarations: [
         CssloadComponent,
+        LogoComponent,
         MessageComponent
     ],
     exports: [
         CommonModule,
         CssloadComponent,
+        LogoComponent,
         MessageComponent,
-        ReactiveFormsModule,
+        ReactiveFormsModule
     ]
 })
 export class SharedModule {}

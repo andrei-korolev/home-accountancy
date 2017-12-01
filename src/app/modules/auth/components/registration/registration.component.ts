@@ -93,6 +93,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
                     }
 
                     this.checkingEmail = false;
+                }, (error: HttpErrorResponse) => {
+                    alert(error);
                 });
         });
     }

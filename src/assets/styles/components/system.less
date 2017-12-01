@@ -1,0 +1,36 @@
+/* System */
+ak-system {
+    width: 100%;
+}
+
+.system {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 16px;
+    background-color: @gray-ee;
+    color: @black-00;
+
+    &__header {
+        margin-bottom: @portlet-margin;
+    }
+
+    &__content {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    &__main {
+        flex-grow: 1;
+    }
+
+    &__sidebar {
+        margin-right: @portlet-margin;
+    }
+
+    &__main,
+    &__header,
+    &__content {
+        outline: 1px solid green;
+    }
+}
