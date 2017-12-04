@@ -1,0 +1,39 @@
+/* Expenses */
+.expenses {
+    font-size: 16px;
+    color: @black-00;
+
+    &__total-balance {
+        display: flex;
+        align-items: center;
+
+        &-text {
+            margin-right: 5px;
+        }
+
+        &-amount {
+            color: @green-24;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        & + & {
+            margin-top: 20px;
+        }
+    }
+
+    &__progress-bar {
+        flex-grow: 1;
+        margin-right: 10px;
+
+        @media @not-desktop {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+}

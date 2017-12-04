@@ -1,0 +1,27 @@
+/* Account */
+.account {
+    font-size: 16px;
+    color: @black-00;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        border-bottom: @border;
+
+        & + & {
+            margin-top: 30px;
+        }
+    }
+
+    &__currency {
+        display: flex;
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+        color: @blue-52;
+    }
+
+    &__value {
+        font-size: 26px;
+    }
+}

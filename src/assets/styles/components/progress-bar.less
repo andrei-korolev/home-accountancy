@@ -1,0 +1,40 @@
+/* Progress bar */
+.progress-bar {
+    border: @border;
+    overflow: hidden;
+    border-radius: @border-radius;
+    font-size: 12px;
+    background-color: @white-f5;
+    color: @black-00;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 20px;
+        padding: 0 10px;
+        white-space: nowrap;
+        transition: @transition-width;
+
+        &._success {
+            background-color: @green-2b;
+        }
+
+        &._warning {
+            background-color: @orange-f0;
+        }
+
+        &._danger {
+            background-color: fade(@red-ff, 60%);
+        }
+
+
+    }
+
+    &__text {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+    }
+}

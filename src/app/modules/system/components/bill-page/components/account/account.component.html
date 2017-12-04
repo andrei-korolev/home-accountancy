@@ -1,0 +1,14 @@
+<div class="account">
+    <ak-common-panel title="Счёт">
+        <div class="account__content" common-panel-content>
+            <ul class="account__list">
+                <li *ngFor="let item of currencies" class="account__item">
+                    <i class="account__currency">
+                        <svg><use [attr.xlink:href]="'#icon-' + item.icon"></use></svg>
+                    </i>
+                    <span class="account__value">{{item.value}}</span>
+                </li>
+            </ul>
+        </div>
+    </ak-common-panel>
+</div>

@@ -1,1 +1,11 @@
-common-panel
+<div class="common-panel">
+    <header class="common-panel__header">
+        <h2 class="common-panel__title">{{title}}</h2>
+        <div class="common-panel__additional-block">
+            <ng-content select="[common-panel-additional-block]"></ng-content>
+        </div>
+    </header>
+    <div class="common-panel__content">
+        <ng-content select="[common-panel-content]"></ng-content>
+    </div>
+</div>

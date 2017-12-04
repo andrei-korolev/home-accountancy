@@ -1,0 +1,43 @@
+/* Table */
+.table {
+    font-size: 16px;
+    color: @black-00;
+
+    &__head {
+        border-bottom: 2px solid @gray-97;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+
+        & + & {
+            border-top: @border;
+        }
+    }
+
+    &__th,
+    &__td {
+        padding: 10px;
+    }
+
+    &__th {
+        font-weight: bold;
+    }
+
+    &._currency-rate &__th,
+    &._currency-rate &__td {
+
+        &:nth-child(1) {
+            width: 32%;
+        }
+
+        &:nth-child(2) {
+            width: 32%;
+        }
+
+        &:nth-child(3) {
+            width: 36%;
+        }
+    }
+}

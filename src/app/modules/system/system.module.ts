@@ -1,7 +1,10 @@
 import {NgModule} from "@angular/core";
 
+import {AccountComponent} from "./components/bill-page/components/account/account.component";
 import {BillPageComponent} from "./components/bill-page/bill-page.component";
 import {CommonPanelComponent} from "./components/common-panel/common-panel.component";
+import {CurrencyRateComponent} from "./components/bill-page/components/currency-rate/currency-rate.component";
+import {ExpensesComponent} from "./components/planning-page/components/expenses/expenses.component";
 import {HistoryPageComponent} from "./components/history-page/history-page.component";
 import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
@@ -18,8 +21,11 @@ import {SystemRoutingModule} from "./system-routing.module";
         SystemRoutingModule
     ],
     declarations: [
+        AccountComponent,
         BillPageComponent,
         CommonPanelComponent,
+        CurrencyRateComponent,
+        ExpensesComponent,
         HistoryPageComponent,
         LayoutPageComponent,
         MainHeaderComponent,

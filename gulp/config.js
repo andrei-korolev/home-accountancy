@@ -15,7 +15,7 @@ module.exports = {
     },
 
     svg: {
-        src: './src/assets/images/svg-icons/*.svg',
+        src: './src/assets/images/svg-icons/**/*.svg',
         htmlSrc: 'src/index.html'
     },
 

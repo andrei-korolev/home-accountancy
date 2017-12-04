@@ -81,6 +81,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     public forbiddenEmail(control: AbstractControl): Promise<ValidationErrors> {
         this.checkingEmail = true;
 
+        //TODO: add types for functions
         return new Promise((resolve, reject) => {
             this.subscriptionGetUserByEmail = this.usersService.getUserByEmail(control.value)
                 .subscribe((user: User) => {
