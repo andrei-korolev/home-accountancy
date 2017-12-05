@@ -103,7 +103,7 @@ gulp.task('svgstore', function () {
                     },
                     {
                         removeAttrs: {
-                            attrs: '(fill|stroke)'
+                            attrs: '(stroke)'
                         }
                     },
                     {
