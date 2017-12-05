@@ -5,16 +5,16 @@
         <div class="auth-main__form">
             <form [formGroup]="formRegistration" (ngSubmit)="onSubmit()" class="form">
                 <div class="form__row">
-                    <div class="form-field _required">
-                        <label for="form-name" class="form-field__label">Имя</label>
+                    <label class="form-field _required">
+                        <span class="form-field__label">Имя</span>
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
+                                    autofocus
                                     formControlName="name"
                                     type="text"
-                                    id="form-name"
                                     class="form-text__input"
-                                    name="email"
+                                    name="name"
                                     placeholder="Введите имя"
                                 >
                             </div>
@@ -27,17 +27,16 @@
                                 Имя не может быть пустым
                             </span>
                         </div>
-                    </div>
+                    </label>
                 </div>
                 <div class="form__row">
-                    <div class="form-field _required">
-                        <label for="form-email" class="form-field__label">Email</label>
+                    <label class="form-field _required">
+                        <span class="form-field__label">Email</span>
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
                                     formControlName="email"
                                     type="email"
-                                    id="form-email"
                                     class="form-text__input _email"
                                     name="email"
                                     placeholder="Введите email"
@@ -67,20 +66,18 @@
                                 Email уже существует
                             </span>
                         </div>
-
-                    </div>
+                    </label>
                 </div>
                 <div class="form__row">
-                    <div class="form-field _required">
-                        <label for="form-password" class="form-field__label">Пароль</label>
+                    <label class="form-field _required">
+                        <span class="form-field__label">Пароль</span>
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
                                     formControlName="password"
                                     type="password"
-                                    id="form-password"
                                     class="form-text__input"
-                                    name="email"
+                                    name="password"
                                     placeholder="Введите пароль"
                                 >
                             </div>
@@ -99,12 +96,13 @@
                                 Минимальная длина пароля - {{formRegistration.get('password').errors.minlength.requiredLength}} мимволов. Сейчас - {{formRegistration.get('password').errors.minlength.actualLength}}
                             </span>
                         </div>
-                    </div>
+                    </label>
                 </div>
-                <div class="auth-main__toolbar">
+                <div class="form__toolbar">
                     <button
                         [disabled]="formRegistration.invalid || checkingEmail"
-                        class="button">Зарегистрироваться</button>
+                        class="button"
+                    >Зарегистрироваться</button>
                 </div>
                 <div class="auth-main__message">
                     <ak-message *ngIf="message" [type]="message.type" [text]="message.text"></ak-message>

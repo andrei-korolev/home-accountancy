@@ -1,31 +1,11 @@
 /* Form text */
 .form-text {
     position: relative;
-    font-size: 14px;
+    font-size: 15px;
+    color: @black-00;
 
     &__input {
-        width: 100%;
-        height: 40px;
-        padding: 0 12px;
-        border: @border;
-        border-radius: @border-radius;
-        font-size: 15px;
-        color: @black-00;
-        background-color: @white-ff;
-        transition: @transition-color-border, @transition-box-shadow;
-
-        &:disabled {
-            background-color: @gray-ee;
-        }
-
-        &:hover:not(:disabled) {
-            border-color: @purple-49;
-        }
-
-        &:focus {
-            box-shadow: 0 0 3px 0 @purple-49;
-            border-color: @purple-49;
-        }
+        .common-style-input();
 
         &._email {
             padding-right: 35px;

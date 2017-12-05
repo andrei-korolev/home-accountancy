@@ -5,6 +5,8 @@ import {BillPageComponent} from "./components/bill-page/bill-page.component";
 import {CommonPanelComponent} from "./components/common-panel/common-panel.component";
 import {CurrencyRateComponent} from "./components/bill-page/components/currency-rate/currency-rate.component";
 import {ExpensesComponent} from "./components/planning-page/components/expenses/expenses.component";
+import {FormAddCategoryComponent} from "./components/records-page/components/form-add-category/form-add-category.component";
+import {FormAddEntryComponent} from "./components/records-page/components/form-add-entry/form-add-entry.component";
 import {HistoryPageComponent} from "./components/history-page/history-page.component";
 import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
@@ -26,6 +28,8 @@ import {SystemRoutingModule} from "./system-routing.module";
         CommonPanelComponent,
         CurrencyRateComponent,
         ExpensesComponent,
+        FormAddCategoryComponent,
+        FormAddEntryComponent,
         HistoryPageComponent,
         LayoutPageComponent,
         MainHeaderComponent,

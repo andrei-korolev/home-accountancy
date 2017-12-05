@@ -1,0 +1,77 @@
+<div class="form-add-entry">
+    <ak-common-panel title="Добавить событие">
+        <div class="form-add-entry__content" common-panel-content>
+            <div class="form">
+                <div class="form__row">
+                    <label class="form-field _required">
+                        <span class="form-field__label">Выберите категорию</span>
+                        <div class="form-field__field">
+                            <div class="form-select">
+                                <select
+                                    autofocus
+                                    name="select-category"
+                                    class="form-select__select"
+                                >
+                                    <option>Пункт 1</option>
+                                    <option>Пункт 2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="form__row">
+                    <div class="form-field _required">
+                        <span class="form-field__label">Выберите тип</span>
+                        <div class="form-field__field">
+                            <div class="form-radio-group">
+                                <div class="form-radio-group__item">
+                                    <label class="form-radio">
+                                        <input
+                                            checked
+                                            type="radio"
+                                            class="form-radio__input"
+                                            name="type"
+                                        >
+                                        <i class="form-radio__icon"></i>
+                                        <span class="form-radio__label">Доход</span>
+                                    </label>
+                                </div>
+                                <div class="form-radio-group__item">
+                                    <label class="form-radio">
+                                        <input
+                                            type="radio"
+                                            class="form-radio__input"
+                                            name="type"
+                                        >
+                                        <i class="form-radio__icon"></i>
+                                        <span class="form-radio__label">Расход</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label class="form-field _required">
+                        <span class="form-field__label">Введите сумму</span>
+                        <div class="form-field__field">
+                            <div class="form-text">
+                                <input
+                                    type="number"
+                                    class="form-text__input"
+                                    name="amount"
+                                    placeholder="0"
+                                >
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="form__toolbar">
+                    <button
+                        class="button"
+                    >Добавить</button>
+                </div>
+            </div>
+        </div>
+    </ak-common-panel>
+</div>

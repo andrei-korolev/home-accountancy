@@ -1,0 +1,23 @@
+/* Records page */
+.records-page {
+    font-size: 16px;
+    color: @black-00;
+
+    &__layout {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__column {
+        width: 49%;
+
+        @media @not-desktop {
+            width: 100%;
+
+            & + & {
+                margin-top: @portlet-margin;
+            }
+        }
+    }
+}
