@@ -1,0 +1,24 @@
+<div class="dropdown">
+    <ul class="dropdown__list">
+        <li *ngFor="let item of menu" class="dropdown__item">
+            <a
+                *ngIf="item.url; else button"
+                [routerLink]="item.url"
+                class="link dropdown__link"
+            >
+                <i class="dropdown__link-icon">
+                    <svg><use [attr.xlink:href]="'#icon-' + item.icon"></use></svg>
+                </i>
+                <span class="dropdown__link-text">{{item.label}}</span>
+            </a>
+            <ng-template #button>
+                <button (click)="onClick(item)" class="button _link dropdown__link">
+                    <i class="dropdown__link-icon">
+                        <svg><use [attr.xlink:href]="'#icon-' + item.icon"></use></svg>
+                    </i>
+                    <span class="dropdown__link-text">{{item.label}}</span>
+                </button>
+            </ng-template>
+        </li>
+    </ul>
+</div>

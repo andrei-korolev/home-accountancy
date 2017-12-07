@@ -4,7 +4,12 @@
             <ak-logo></ak-logo>
             <span class="main-header__logotype-text">Бухгалтерия</span>
         </a>
-        <time class="main-header__time">12:12:12</time>
-        <div class="main-header__user">Здравствуйте, Ирина</div>
+        <time class="main-header__time">{{date | date:"dd.MM.yyyy"}}</time>
+        <button (click)="onToggleMenu()" class="button _text main-header__user">
+            <span class="main-header__user-text">Здравствуйте, {{user.name}}</span>
+            <div class="main-header__menu">
+                <ak-dropdown [hidden]="!isOpenMenu" (onItemSelect)="onLogout()" [menu]="menu"></ak-dropdown>
+            </div>
+        </button>
     </div>
 </header>

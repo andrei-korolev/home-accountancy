@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                window.localStorage.setItem("user", JSON.stringify(user));
 
                this.authService.login();
-               // this.router.navigate([]);
+               this.router.navigate(["/system", "bill"]);
            }, (error: HttpErrorResponse) => {
                alert(error);
            });

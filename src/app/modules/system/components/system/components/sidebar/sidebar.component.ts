@@ -10,18 +10,18 @@ export class SidebarComponent {
     public navigation: SidebarNavigationLinkModel[] = [{
         label: "Счёт",
         icon: "calculator",
-        url: "test"
+        url: "./bill"
     }, {
         label: "История",
         icon: "clock",
-        url: "test"
+        url: "./history"
     }, {
         label: "Планирование",
         icon: "archive",
-        url: "test"
+        url: "./planning"
     }, {
         label: "Запись",
         icon: "circle-with-plus",
-        url: "test"
+        url: "./records"
     }];
 }

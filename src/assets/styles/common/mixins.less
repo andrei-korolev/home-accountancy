@@ -31,3 +31,18 @@
         border-color: @purple-49;
     }
 }
+
+.style-link() {
+    font-size: 16px;
+    color: @blue-52;
+    transition: @transition-color;
+
+    &:focus,
+    &:hover {
+        color: darken(@blue-52, 20%);
+    }
+
+    &:active {
+        color: darken(@blue-52, 50%);
+    }
+}
