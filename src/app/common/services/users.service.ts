@@ -1,30 +1,28 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
+import "rxjs/add/operator/map";
+import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs/Observable";
 
+import {BaseApi} from "../core/base-api";
 import {ENVIRONMENT} from "../../../config";
 import {User} from "../models/user.model";
 
 @Injectable()
-export class UsersService {
-    constructor(private http: HttpClient) {}
+export class UsersService extends BaseApi {
+    constructor(public http: HttpClient) {
+        super(http);
+    }
 
     public getUserByEmail(email: string): Observable<User> {
-        return this.http
-            .get(`${ENVIRONMENT.serverBase}/users?email=${email}`)
-            .map((user: User) => user[0] ? user[0] : undefined)
-            .catch((error: HttpErrorResponse) => {
-                return Observable.throw(error.statusText);
-            });
+        let parameter: string = "email";
+
+        return this
+            .get(`${ENVIRONMENT.routes.users.path}?${parameter}=${email}`)
+            .map((user: User) => user[0] ? user[0] : undefined);
     }
 
     public createNewUser(user: User): Observable<User> {
-        return this.http
-            .post(`${ENVIRONMENT.serverBase}/users`, user)
-            .catch((error: HttpErrorResponse) => {
-                return Observable.throw(error.statusText);
-            });
+        return this.post(ENVIRONMENT.routes.users.path, user);
     }
 }

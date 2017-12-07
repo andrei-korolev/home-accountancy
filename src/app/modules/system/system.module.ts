@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 
 import {AccountComponent} from "./components/bill-page/components/account/account.component";
 import {BillPageComponent} from "./components/bill-page/bill-page.component";
+import {BillService} from "../../common/services/bill.service";
 import {CommonPanelComponent} from "./components/common-panel/common-panel.component";
 import {CurrencyRateComponent} from "./components/bill-page/components/currency-rate/currency-rate.component";
 import {ExpensesComponent} from "./components/planning-page/components/expenses/expenses.component";
@@ -41,6 +42,9 @@ import {SystemRoutingModule} from "./system-routing.module";
         RecordsPageComponent,
         SidebarComponent,
         SystemComponent
+    ],
+    providers: [
+        BillService
     ]
 })
 export class SystemModule {}
