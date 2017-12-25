@@ -11,19 +11,14 @@
                 </div>
                 <div class="table__body">
                     <div class="table__row">
-                        <div class="table__td">доллар</div>
-                        <div class="table__td">24</div>
-                        <div class="table__td">11.12.2017</div>
+                        <div class="table__td">RUB</div>
+                        <div class="table__td">1</div>
+                        <div class="table__td">{{currency.date | date:"dd.MM.yyyy"}}</div>
                     </div>
-                    <div class="table__row">
-                        <div class="table__td">доллар</div>
-                        <div class="table__td">24</div>
-                        <div class="table__td">11.12.2017</div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__td">доллар</div>
-                        <div class="table__td">24</div>
-                        <div class="table__td">11.12.2017</div>
+                    <div *ngFor="let item of currencies" class="table__row">
+                        <div class="table__td">{{item}}</div>
+                        <div class="table__td">{{currency.rates[item]}}</div>
+                        <div class="table__td">{{currency.date | date:"dd.MM.yyyy"}}</div>
                     </div>
                 </div>
             </div>

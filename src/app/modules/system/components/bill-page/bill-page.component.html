@@ -1,12 +1,16 @@
 <article class="bill-page">
     <ak-layout-page title="Страница счета">
         <div class="bill-page__layout">
-            <div class="bill-page__column">
-                <ak-account></ak-account>
-            </div>
-            <div class="bill-page__column">
-                <ak-currency-rate></ak-currency-rate>
-            </div>
+            <ak-cssload *ngIf="!bill; else content"></ak-cssload>
+
+            <ng-template #content>
+                <div class="bill-page__column">
+                    <ak-account [bill]="bill" [currency]="currency"></ak-account>
+                </div>
+                <div class="bill-page__column">
+                    <ak-currency-rate [currency]="currency"></ak-currency-rate>
+                </div>
+            </ng-template>
         </div>
     </ak-layout-page>
 </article>

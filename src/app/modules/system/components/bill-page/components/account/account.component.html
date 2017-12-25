@@ -6,7 +6,7 @@
                     <i class="account__currency">
                         <svg><use [attr.xlink:href]="'#icon-' + item.icon"></use></svg>
                     </i>
-                    <span class="account__value">{{item.value}}</span>
+                    <span class="account__value">{{item.value | number:"1.2"}}</span>
                 </li>
             </ul>
         </div>

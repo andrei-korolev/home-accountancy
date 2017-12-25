@@ -12,6 +12,8 @@ import {CurrencyModel} from "../../../../common/models/currency.model";
     templateUrl: "./bill-page.component.html"
 })
 export class BillPageComponent implements OnInit, OnDestroy {
+    public bill: BillModel;
+    public currency: CurrencyModel;
     public subscriptionBillService: Subscription;
 
     constructor(private billService: BillService) {}
@@ -21,7 +23,8 @@ export class BillPageComponent implements OnInit, OnDestroy {
             this.billService.getBill(),
             this.billService.getCurrency()
         ).subscribe((data: [BillModel, CurrencyModel]) => {
-            console.log(data);
+            this.bill = data[0];
+            this.currency = data[1];
         });
     }
 
