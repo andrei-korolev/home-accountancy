@@ -57,11 +57,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     public onSubmit(): void {
-        const formData = this.formLogin.value;
+        const {
+            email,
+            password
+        } = this.formLogin.value;
 
         this.loading = true;
 
-       this.subscriptionUsersService = this.usersService.getUserByEmail(formData.email)
+       this.subscriptionUsersService = this.usersService.getUserByEmail(email)
            .subscribe((user: User) => {
                this.loading = false;
 
@@ -70,7 +73,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                    return;
                }
 
-               if (user.password !== formData.password) {
+               if (user.password !== password) {
                    this.showMessage("Пароль не верный");
                    return;
                }

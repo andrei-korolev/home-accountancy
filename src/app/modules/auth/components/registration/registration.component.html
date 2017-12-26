@@ -42,7 +42,7 @@
                                     placeholder="Введите email"
                                 >
                                 <div class="form-text__loading">
-                                    <ak-cssload [hidden]="!checkingEmail" field="true"></ak-cssload>
+                                    <ak-cssload [hidden]="!formRegistration.controls.email.pending" field="true"></ak-cssload>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="form__toolbar">
                     <button
-                        [disabled]="formRegistration.invalid || checkingEmail"
+                        [disabled]="!formRegistration.valid"
                         class="button"
                     >Зарегистрироваться</button>
                 </div>
