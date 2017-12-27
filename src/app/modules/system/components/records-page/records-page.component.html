@@ -5,7 +5,7 @@
                 <ak-form-add-entry></ak-form-add-entry>
             </div>
             <div class="records-page__column">
-                <ak-form-add-category></ak-form-add-category>
+                <ak-form-add-category (onCategoryAdd)="newCategoryAdded($event)"></ak-form-add-category>
             </div>
         </div>
     </ak-layout-page>

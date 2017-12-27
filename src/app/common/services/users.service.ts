@@ -18,11 +18,11 @@ export class UsersService extends BaseApi {
         let parameter: string = "email";
 
         return this
-            .get(`${ENVIRONMENT.routes.users.path}?${parameter}=${email}`)
+            .get(`${ENVIRONMENT.services.users.path}?${parameter}=${email}`)
             .map((user: User) => user[0] ? user[0] : undefined);
     }
 
     public createNewUser(user: User): Observable<User> {
-        return this.post(ENVIRONMENT.routes.users.path, user);
+        return this.post(ENVIRONMENT.services.users.path, user);
     }
 }

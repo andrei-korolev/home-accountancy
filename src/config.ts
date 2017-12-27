@@ -22,6 +22,12 @@ const ROUTES: any = {
     },
     records: {
         path: "records"
+    }
+};
+
+const SERVICES: any = {
+    categories: {
+        path: "categories"
     },
     users: {
         path: "users"
@@ -35,7 +41,8 @@ const OUTSOURCING_SERVICES: any = {
 };
 
 export const ENVIRONMENT: any = {
-    routes: ROUTES,
     outsourcingServices: OUTSOURCING_SERVICES,
-    serverBase: "http://localhost:4200"
+    routes: ROUTES,
+    serverBase: "http://localhost:4200",
+    services: SERVICES
 };

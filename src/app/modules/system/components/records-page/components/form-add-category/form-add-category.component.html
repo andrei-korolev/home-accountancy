@@ -1,18 +1,37 @@
 <div class="form-add-category">
     <ak-common-panel title="Добавить категорию">
-        <div class="form-add-category__content" common-panel-content>
-            <div class="form">
+        <div class="form-add-category__content cssload-wrapper" common-panel-content>
+            <ak-cssload *ngIf="loading"></ak-cssload>
+            <form [formGroup]="formAdd" (ngSubmit)="onSubmit()" class="form" [class._visibility-hidden]="loading">
                 <div class="form__row">
                     <label class="form-field _required">
                         <span class="form-field__label">Введите название</span>
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
+                                    formControlName="name"
                                     type="text"
                                     class="form-text__input"
-                                    name="name-category"
+                                    name="name"
                                 >
+                                <div class="form-text__loading">
+                                    <ak-cssload [hidden]="!formAdd.controls.name.pending" field="true"></ak-cssload>
+                                </div>
                             </div>
+                        </div>
+                        <div *ngIf="formAdd.get('name').invalid && formAdd.get('name').touched" class="form-field__message">
+                            <span
+                                *ngIf="formAdd.get('name').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Название категории не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formAdd.get('name').hasError('forbiddenName')"
+                                class="form-field__message-text"
+                            >
+                                Категория уже существует
+                            </span>
                         </div>
                     </label>
                 </div>
@@ -22,20 +41,37 @@
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
-                                    type="text"
+                                    formControlName="limit"
+                                    type="number"
                                     class="form-text__input"
                                     name="limit"
+                                    min="1"
                                 >
                             </div>
+                        </div>
+                        <div *ngIf="formAdd.get('limit').invalid && formAdd.get('limit').touched" class="form-field__message">
+                            <span
+                                *ngIf="formAdd.get('limit').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Поле не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formAdd.get('limit').hasError('min')"
+                                class="form-field__message-text"
+                            >
+                                Минимальный лимит - 1
+                            </span>
                         </div>
                     </label>
                 </div>
                 <div class="form__toolbar">
                     <button
+                        [disabled]="!formAdd.valid"
                         class="button"
                     >Добавить</button>
                 </div>
-            </div>
+            </form>
         </div>
     </ak-common-panel>
 </div>
