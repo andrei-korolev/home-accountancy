@@ -4,7 +4,7 @@ import {Subscription} from "rxjs/Subscription";
 
 import {CategoriesService} from "../../../../../../common/services/categories.service";
 import {CategoryModel} from "../../../../../../common/models/category.model";
-import {forbiddenNameValidator} from "./forbidden-name.validator";
+import {forbiddenNameCategoryValidator} from "../../../../../../common/validators/forbidden-name-category.validator";
 
 @Component({
     selector: "ak-form-add-category",
@@ -30,7 +30,7 @@ export class FormAddCategoryComponent implements OnInit, OnDestroy {
         this.formAdd = this.fb.group({
             name: ["", [
                 Validators.required
-            ], forbiddenNameValidator.bind(this)],
+            ], forbiddenNameCategoryValidator.bind(this)],
             limit: [this.minValueLimit, [
                 Validators.required,
                 Validators.min(this.minValueLimit)
@@ -54,7 +54,7 @@ export class FormAddCategoryComponent implements OnInit, OnDestroy {
             limit
         } = this.formAdd.value;
 
-        const category: CategoryModel = new CategoryModel(name, limit);
+        const category: CategoryModel = new CategoryModel(name.toLowerCase(), limit);
 
         this.loading = true;
 

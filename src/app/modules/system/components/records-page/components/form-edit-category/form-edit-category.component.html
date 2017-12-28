@@ -1,0 +1,99 @@
+<div class="form-edit-category">
+    <ak-common-panel title="Редактировать категорию">
+        <div class="form-edit-category__content cssload-wrapper" common-panel-content>
+            <ak-cssload *ngIf="!categories.length || loading"></ak-cssload>
+            <form [formGroup]="formEdit" (ngSubmit)="onSubmit()" class="form" [class._visibility-hidden]="!categories.length || loading">
+                <div class="form__row">
+                    <label class="form-field _required">
+                        <span class="form-field__label">Выберите категорию</span>
+                        <div class="form-field__field">
+                            <div class="form-select">
+                                <select
+                                    formControlName="select"
+                                    autofocus
+                                    name="select-category"
+                                    class="form-select__select"
+                                >
+                                    <option
+                                        *ngFor="let item of categories"
+                                        [value]="item.id"
+                                    >{{item.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <ng-container *ngIf="currentCategory">
+                    <div class="form__row">
+                        <label class="form-field _required">
+                            <span class="form-field__label">Введите новое название</span>
+                            <div class="form-field__field">
+                                <div class="form-text">
+                                    <input
+                                        formControlName="name"
+                                        type="text"
+                                        class="form-text__input"
+                                        name="name"
+                                    >
+                                    <div class="form-text__loading">
+                                        <ak-cssload [hidden]="!formEdit.controls.name.pending" field="true"></ak-cssload>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="formEdit.get('name').invalid && formEdit.get('name').touched" class="form-field__message">
+                            <span
+                                *ngIf="formEdit.get('name').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Название категории не может быть пустым
+                            </span>
+                                <span
+                                    *ngIf="formEdit.get('name').hasError('forbiddenName')"
+                                    class="form-field__message-text"
+                                >
+                                Категория уже существует
+                            </span>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form__row">
+                        <label class="form-field _required">
+                            <span class="form-field__label">Введите новый лимит</span>
+                            <div class="form-field__field">
+                                <div class="form-text">
+                                    <input
+                                        formControlName="limit"
+                                        type="number"
+                                        class="form-text__input"
+                                        name="limit"
+                                        min="1"
+                                    >
+                                </div>
+                            </div>
+                            <div *ngIf="formEdit.get('limit').invalid && formEdit.get('limit').touched" class="form-field__message">
+                            <span
+                                *ngIf="formEdit.get('limit').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Поле не может быть пустым
+                            </span>
+                                <span
+                                    *ngIf="formEdit.get('limit').hasError('min')"
+                                    class="form-field__message-text"
+                                >
+                                Минимальный лимит - 1
+                            </span>
+                            </div>
+                        </label>
+                    </div>
+                </ng-container>
+                <div class="form__toolbar">
+                    <button
+                        [disabled]="!formEdit.valid || !differencesFields"
+                        class="button"
+                    >Редактировать</button>
+                </div>
+            </form>
+        </div>
+    </ak-common-panel>
+</div>

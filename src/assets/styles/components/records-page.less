@@ -11,13 +11,10 @@
 
     &__column {
         width: 49%;
+        margin-bottom: @portlet-margin;
 
         @media @not-desktop {
             width: 100%;
-
-            & + & {
-                margin-top: @portlet-margin;
-            }
         }
     }
 }

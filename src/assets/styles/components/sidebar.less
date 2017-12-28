@@ -19,6 +19,10 @@
         padding-left: 20px;
         transition: @transition-background-color;
 
+        &._active {
+            pointer-events: none;
+        }
+
         &._active,
         &:hover,
         &:focus {
@@ -33,7 +37,7 @@
         }
 
         &:hover &-icon,
-        &:focus &-icon {
+        &:focus:not(._active) &-icon {
             transform: scale(1.5);
         }
     }

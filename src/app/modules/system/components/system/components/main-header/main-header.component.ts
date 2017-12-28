@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 
 import {AuthService} from "../../../../../../common/services/auth.service";
 import {DropdownModel} from "../../../../../../components/dropdown/dropdown.model";
+import {ENVIRONMENT} from "../../../../../../../config";
 import {User} from "../../../../../../common/models/user.model";
 
 @Component({
@@ -17,7 +18,7 @@ export class MainHeaderComponent implements OnInit {
     public menu: DropdownModel[] = [{
         label: "Сделать запись",
         icon: "circle-with-plus",
-        url: "./records"
+        url: ENVIRONMENT.routes.records.path
     }, {
         label: "Выйти",
         icon: "exit"

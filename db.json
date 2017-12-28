@@ -19,19 +19,24 @@
   },
   "categories": [
     {
-      "name": "Дом",
-      "capacity": 15000,
+      "name": "дом",
+      "limit": 150001,
       "id": 1
     },
     {
-      "name": "Еда",
-      "capacity": 10000,
+      "name": "еда",
+      "limit": 464,
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Машина",
-      "capacity": 7000
+      "name": "машина",
+      "limit": 7000,
+      "id": 3
+    },
+    {
+      "name": "машина1",
+      "limit": 1,
+      "id": 4
     }
   ],
   "events": [
