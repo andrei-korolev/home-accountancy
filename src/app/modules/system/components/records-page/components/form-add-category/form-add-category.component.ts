@@ -5,6 +5,8 @@ import {Subscription} from "rxjs/Subscription";
 import {CategoriesService} from "../../../../../../common/services/categories.service";
 import {CategoryModel} from "../../../../../../common/models/category.model";
 import {forbiddenNameCategoryValidator} from "../../../../../../common/validators/forbidden-name-category.validator";
+import {ModalNotificationComponent} from "../../../../../../components/modal/components/modal-notification/modal-notification.component";
+import {ModalService} from "../../../../../../components/modal/modal.service";
 
 @Component({
     selector: "ak-form-add-category",
@@ -23,7 +25,8 @@ export class FormAddCategoryComponent implements OnInit, OnDestroy {
 
     constructor(
         private categoriesService: CategoriesService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private modalService: ModalService
     ) {}
 
     public ngOnInit(): void {
@@ -60,6 +63,8 @@ export class FormAddCategoryComponent implements OnInit, OnDestroy {
 
         this.subscriptionAddCategory = this.categoriesService.addCategory(category)
             .subscribe((newCategory: CategoryModel) => {
+                let message: string = `Добавлена категория - ${newCategory.name}`;
+
                 this.formAdd.reset();
 
                 this.formAdd.patchValue({
@@ -67,6 +72,13 @@ export class FormAddCategoryComponent implements OnInit, OnDestroy {
                 });
 
                 this.onCategoryAdd.emit(newCategory);
+
+                this.modalService.open({
+                    component: ModalNotificationComponent,
+                    context: {
+                        message: message
+                    }
+                });
 
                 this.loading = false;
             });

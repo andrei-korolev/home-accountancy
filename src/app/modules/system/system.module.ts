@@ -51,6 +51,9 @@ import {SystemRoutingModule} from "./system-routing.module";
         BillService,
         CategoriesService,
         MoneyEventService
+    ],
+    exports: [
+        SharedModule
     ]
 })
 export class SystemModule {}

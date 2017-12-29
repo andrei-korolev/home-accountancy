@@ -1,0 +1,12 @@
+<div class="modal-carcass">
+    <h3 *ngIf="title" class="modal-carcass__title">{{title}}</h3>
+    <p *ngIf="subtitle" class="modal-carcass__subtitle">{{subtitle}}</p>
+
+    <div class="modal-carcass__content">
+        <ng-content select="[modal-carcass-content]"></ng-content>
+    </div>
+
+    <div class="modal-carcass__toolbar">
+        <ng-content select="[modal-carcass-toolbar]"></ng-content>
+    </div>
+</div>
