@@ -15,7 +15,7 @@ export class BillService extends BaseApi {
     }
 
     public getBill(): Observable<BillModel> {
-        return this.get(ENVIRONMENT.routes.bill.path);
+        return this.get(ENVIRONMENT.services.bill.path);
     }
 
     public getCurrency(base: CurrencyType = "RUB"): Observable<CurrencyModel> {
@@ -26,5 +26,9 @@ export class BillService extends BaseApi {
             .catch((error: HttpErrorResponse) => {
                 return Observable.throw(error.statusText);
             });
+    }
+
+    public updateBill(bill: BillModel): Observable<BillModel> {
+        return this.put(ENVIRONMENT.services.bill.path, bill);
     }
 }

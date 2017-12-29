@@ -8,7 +8,7 @@
                 <ak-form-add-category (onCategoryAdd)="updateListCategories($event)"></ak-form-add-category>
             </div>
             <div class="records-page__column">
-                <ak-form-add-entry></ak-form-add-entry>
+                <ak-form-add-entry [categories]="categories"></ak-form-add-entry>
             </div>
         </div>
     </ak-layout-page>

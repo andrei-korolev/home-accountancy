@@ -1,18 +1,27 @@
 <div class="form-add-entry">
     <ak-common-panel title="Добавить событие">
-        <div class="form-add-entry__content" common-panel-content>
-            <div class="form">
+        <div class="form-add-entry__content cssload-wrapper" common-panel-content>
+            <ak-cssload *ngIf="!categories.length || loading"></ak-cssload>
+            <form
+                [formGroup]="formAdd"
+                (ngSubmit)="onSubmit()"
+                class="form"
+                [class._visibility-hidden]="!categories.length || loading"
+            >
                 <div class="form__row">
                     <label class="form-field _required">
                         <span class="form-field__label">Выберите категорию</span>
                         <div class="form-field__field">
                             <div class="form-select">
                                 <select
-                                    name="select-category"
+                                    formControlName="category"
+                                    name="category"
                                     class="form-select__select"
                                 >
-                                    <option>Пункт 1</option>
-                                    <option>Пункт 2</option>
+                                    <option
+                                        *ngFor="let item of categories"
+                                        [value]="item.id"
+                                    >{{item.name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -23,27 +32,17 @@
                         <span class="form-field__label">Выберите тип</span>
                         <div class="form-field__field">
                             <div class="form-radio-group">
-                                <div class="form-radio-group__item">
+                                <div *ngFor="let item of typesEntries" class="form-radio-group__item">
                                     <label class="form-radio">
                                         <input
-                                            checked
+                                            [value]="item.type"
+                                            formControlName="type"
                                             type="radio"
                                             class="form-radio__input"
                                             name="type"
                                         >
                                         <i class="form-radio__icon"></i>
-                                        <span class="form-radio__label">Доход</span>
-                                    </label>
-                                </div>
-                                <div class="form-radio-group__item">
-                                    <label class="form-radio">
-                                        <input
-                                            type="radio"
-                                            class="form-radio__input"
-                                            name="type"
-                                        >
-                                        <i class="form-radio__icon"></i>
-                                        <span class="form-radio__label">Расход</span>
+                                        <span class="form-radio__label">{{item.label}}</span>
                                     </label>
                                 </div>
                             </div>
@@ -56,10 +55,40 @@
                         <div class="form-field__field">
                             <div class="form-text">
                                 <input
+                                    formControlName="amount"
                                     type="number"
                                     class="form-text__input"
                                     name="amount"
-                                    placeholder="0"
+                                    min="1"
+                                >
+                            </div>
+                        </div>
+                        <div *ngIf="formAdd.get('amount').invalid && formAdd.get('amount').touched" class="form-field__message">
+                            <span
+                                *ngIf="formAdd.get('amount').hasError('required')"
+                                class="form-field__message-text"
+                            >
+                                Поле не может быть пустым
+                            </span>
+                            <span
+                                *ngIf="formAdd.get('amount').hasError('min')"
+                                class="form-field__message-text"
+                            >
+                                    Минимальная сумма - {{minValueLimit}}
+                            </span>
+                        </div>
+                    </label>
+                </div>
+                <div class="form__row">
+                    <label class="form-field">
+                        <span class="form-field__label">Введите описание</span>
+                        <div class="form-field__field">
+                            <div class="form-text">
+                                <input
+                                    formControlName="description"
+                                    type="text"
+                                    class="form-text__input"
+                                    name="description"
                                 >
                             </div>
                         </div>
@@ -67,10 +96,11 @@
                 </div>
                 <div class="form__toolbar">
                     <button
+                        [disabled]="!formAdd.valid"
                         class="button"
                     >Добавить</button>
                 </div>
-            </div>
+            </form>
         </div>
     </ak-common-panel>
 </div>

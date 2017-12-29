@@ -60,7 +60,7 @@
                                 *ngIf="formLogin.get('password').hasError('minlength')"
                                 class="form-field__message-text"
                             >
-                                Минимальная длина пароля - {{formLogin.get('password').errors.minlength.requiredLength}} мимволов. Сейчас - {{formLogin.get('password').errors.minlength.actualLength}}
+                                Минимальная длина пароля - {{minPasswordLength}} мимволов. Сейчас - {{formLogin.get('password').errors.minlength.actualLength}}
                             </span>
                         </div>
                     </label>

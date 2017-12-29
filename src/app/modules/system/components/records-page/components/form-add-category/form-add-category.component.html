@@ -2,7 +2,12 @@
     <ak-common-panel title="Добавить категорию">
         <div class="form-add-category__content cssload-wrapper" common-panel-content>
             <ak-cssload *ngIf="loading"></ak-cssload>
-            <form [formGroup]="formAdd" (ngSubmit)="onSubmit()" class="form" [class._visibility-hidden]="loading">
+            <form
+                [formGroup]="formAdd"
+                (ngSubmit)="onSubmit()"
+                class="form"
+                [class._visibility-hidden]="loading"
+            >
                 <div class="form__row">
                     <label class="form-field _required">
                         <span class="form-field__label">Введите название</span>
@@ -60,7 +65,7 @@
                                 *ngIf="formAdd.get('limit').hasError('min')"
                                 class="form-field__message-text"
                             >
-                                Минимальный лимит - 1
+                                Минимальный лимит - {{minValueLimit}}
                             </span>
                         </div>
                     </label>

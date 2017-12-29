@@ -15,6 +15,7 @@ import {HistoryPageComponent} from "./components/history-page/history-page.compo
 import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
 import {ListActivitiesComponent} from "./components/history-page/components/list-activities/list-activities.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
+import {MoneyEventService} from "../../common/services/money-event.service";
 import {PlanningPageComponent} from "./components/planning-page/planning-page.component";
 import {RecordsPageComponent} from "./components/records-page/records-page.component";
 import {SharedModule} from "../shared/shared.module";
@@ -48,7 +49,8 @@ import {SystemRoutingModule} from "./system-routing.module";
     ],
     providers: [
         BillService,
-        CategoriesService
+        CategoriesService,
+        MoneyEventService
     ]
 })
 export class SystemModule {}

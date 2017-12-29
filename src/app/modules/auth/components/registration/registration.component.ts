@@ -16,6 +16,7 @@ import {User} from "../../../../common/models/user.model";
 export class RegistrationComponent implements OnInit, OnDestroy {
     public formRegistration: FormGroup;
     public loading: boolean;
+    public minPasswordLength: number = 6;
 
     private subscriptionCreateNewUser: Subscription;
     private subscriptionGetUserByEmail: Subscription;
@@ -34,7 +35,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
             ], forbiddenEmailValidator.bind(this)],
             password: ["", [
                 Validators.required,
-                Validators.minLength(6)
+                Validators.minLength(this.minPasswordLength)
             ]],
             name: ["", [
                 Validators.required

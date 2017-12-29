@@ -2,16 +2,21 @@
     <ak-common-panel title="Редактировать категорию">
         <div class="form-edit-category__content cssload-wrapper" common-panel-content>
             <ak-cssload *ngIf="!categories.length || loading"></ak-cssload>
-            <form [formGroup]="formEdit" (ngSubmit)="onSubmit()" class="form" [class._visibility-hidden]="!categories.length || loading">
+            <form
+                [formGroup]="formEdit"
+                (ngSubmit)="onSubmit()"
+                class="form"
+                [class._visibility-hidden]="!categories.length || loading"
+            >
                 <div class="form__row">
                     <label class="form-field _required">
                         <span class="form-field__label">Выберите категорию</span>
                         <div class="form-field__field">
                             <div class="form-select">
                                 <select
-                                    formControlName="select"
+                                    formControlName="category"
                                     autofocus
-                                    name="select-category"
+                                    name="category"
                                     class="form-select__select"
                                 >
                                     <option
@@ -41,18 +46,18 @@
                                 </div>
                             </div>
                             <div *ngIf="formEdit.get('name').invalid && formEdit.get('name').touched" class="form-field__message">
-                            <span
-                                *ngIf="formEdit.get('name').hasError('required')"
-                                class="form-field__message-text"
-                            >
-                                Название категории не может быть пустым
-                            </span>
+                                <span
+                                    *ngIf="formEdit.get('name').hasError('required')"
+                                    class="form-field__message-text"
+                                >
+                                    Название категории не может быть пустым
+                                </span>
                                 <span
                                     *ngIf="formEdit.get('name').hasError('forbiddenName')"
                                     class="form-field__message-text"
                                 >
-                                Категория уже существует
-                            </span>
+                                    Категория уже существует
+                                </span>
                             </div>
                         </label>
                     </div>
@@ -71,18 +76,18 @@
                                 </div>
                             </div>
                             <div *ngIf="formEdit.get('limit').invalid && formEdit.get('limit').touched" class="form-field__message">
-                            <span
-                                *ngIf="formEdit.get('limit').hasError('required')"
-                                class="form-field__message-text"
-                            >
-                                Поле не может быть пустым
-                            </span>
+                                <span
+                                    *ngIf="formEdit.get('limit').hasError('required')"
+                                    class="form-field__message-text"
+                                >
+                                    Поле не может быть пустым
+                                </span>
                                 <span
                                     *ngIf="formEdit.get('limit').hasError('min')"
                                     class="form-field__message-text"
                                 >
-                                Минимальный лимит - 1
-                            </span>
+                                    Минимальный лимит - {{minValueLimit}}
+                                </span>
                             </div>
                         </label>
                     </div>

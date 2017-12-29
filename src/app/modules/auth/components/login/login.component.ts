@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public formLogin: FormGroup;
     public loading: boolean;
     public message: MessageModel;
+    public minPasswordLength: number = 6;
 
     private subscriptionUsersService: Subscription;
 
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             ]],
             password: ["", [
                 Validators.required,
-                Validators.minLength(6)
+                Validators.minLength(this.minPasswordLength)
             ]]
         });
     }

@@ -26,8 +26,14 @@ const ROUTES: any = {
 };
 
 const SERVICES: any = {
+    bill: {
+        path: "bill"
+    },
     categories: {
         path: "categories"
+    },
+    events: {
+        path: "events"
     },
     users: {
         path: "users"
@@ -40,9 +46,15 @@ const OUTSOURCING_SERVICES: any = {
     }
 };
 
+const TYPE_ENTRIES: any = {
+    income: "income",
+    outcome: "outcome"
+};
+
 export const ENVIRONMENT: any = {
     outsourcingServices: OUTSOURCING_SERVICES,
     routes: ROUTES,
     serverBase: "http://localhost:4200",
-    services: SERVICES
+    services: SERVICES,
+    typeEntries: TYPE_ENTRIES
 };

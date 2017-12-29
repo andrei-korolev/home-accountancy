@@ -25,7 +25,7 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
 
     private subscriptionGetCategoryByName: Subscription;
     private subscriptionValueChangesForm: Subscription;
-    private subscriptionValueChangesSelect: Subscription;
+    private subscriptionValueChangesCategory: Subscription;
 
     constructor(
         private categoriesService: CategoriesService,
@@ -34,7 +34,7 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.formEdit = this.fb.group({
-            select: [""],
+            category: [""],
             name: ["", [
                 Validators.required
             ], forbiddenNameCategoryValidator.bind(this)],
@@ -44,7 +44,7 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
             ]]
         });
 
-        this.subscriptionValueChangesSelect = this.formEdit.controls.select.valueChanges
+        this.subscriptionValueChangesCategory = this.formEdit.controls.category.valueChanges
             .subscribe((id: string) => {
                 this.currentCategory = this.categories
                     .find((item: CategoryModel) => {
@@ -71,8 +71,8 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
             this.subscriptionGetCategoryByName.unsubscribe();
         }
 
-        if (this.subscriptionValueChangesSelect) {
-            this.subscriptionValueChangesSelect.unsubscribe();
+        if (this.subscriptionValueChangesCategory) {
+            this.subscriptionValueChangesCategory.unsubscribe();
         }
 
         if (this.subscriptionValueChangesForm) {
@@ -82,12 +82,12 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
 
     public onSubmit(): void {
         const {
-            select,
+            category,
             name,
             limit
         } = this.formEdit.value;
 
-        const newCategory: CategoryModel = new CategoryModel(name, limit, select);
+        const newCategory: CategoryModel = new CategoryModel(name, limit, category);
 
         this.loading = true;
 
@@ -96,6 +96,9 @@ export class FormEditCategoryComponent implements OnInit, OnDestroy {
                 this.onCategoryEdit.emit(category);
 
                 this.differencesFields = false;
+
+                //TODO: add notification
+                alert("Категория успешно отредактирована");
 
                 this.loading = false;
             });
