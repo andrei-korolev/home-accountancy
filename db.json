@@ -20,23 +20,18 @@
   "categories": [
     {
       "name": "дом",
-      "limit": 150001,
+      "limit": 15000,
       "id": 1
     },
     {
       "name": "еда",
-      "limit": 464,
+      "limit": 1000,
       "id": 2
     },
     {
       "name": "машина",
       "limit": 7000,
       "id": 3
-    },
-    {
-      "name": "машина1",
-      "limit": 1,
-      "id": 4
     }
   ],
   "events": [

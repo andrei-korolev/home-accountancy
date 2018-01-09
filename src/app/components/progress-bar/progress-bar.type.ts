@@ -1,1 +1,1 @@
-export type ProgressBarType = "success";
+export type ProgressBarType = "success" | "danger" | "warning";

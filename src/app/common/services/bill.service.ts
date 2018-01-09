@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 
@@ -23,8 +23,8 @@ export class BillService extends BaseApi {
 
         return this.http
             .get(`${ENVIRONMENT.outsourcingServices.fixer.path}?${parameter}=${base}`)
-            .catch((error: HttpErrorResponse) => {
-                return Observable.throw(error.statusText);
+            .catch((error: any) => {
+                return Observable.throw(error);
             });
     }
 

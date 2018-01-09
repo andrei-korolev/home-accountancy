@@ -83,7 +83,7 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
         const date: Date = new Date();
         const dateString: string = `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
-        const event: MoneyEventModel = new MoneyEventModel(amount, category, dateString, description, type);
+        const event: MoneyEventModel = new MoneyEventModel(amount, +category, dateString, description, type);
 
         this.loading = true;
 

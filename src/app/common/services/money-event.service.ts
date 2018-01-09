@@ -15,4 +15,8 @@ export class MoneyEventService extends BaseApi {
     public addEvent(event: MoneyEventModel): Observable<MoneyEventModel> {
         return this.post(ENVIRONMENT.services.events.path, event);
     }
+
+    public getEvents(): Observable<MoneyEventModel[]> {
+        return this.get(ENVIRONMENT.services.events.path);
+    }
 }

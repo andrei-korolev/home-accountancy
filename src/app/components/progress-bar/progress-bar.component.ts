@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 
 import {ProgressBarType} from "./progress-bar.type";
 
@@ -6,13 +6,22 @@ import {ProgressBarType} from "./progress-bar.type";
     selector: "ak-progress-bar",
     templateUrl: "./progress-bar.component.html"
 })
-export class ProgressBarComponent {
+export class ProgressBarComponent implements OnInit {
+    public type: ProgressBarType;
+
     @Input()
     public title: string;
 
     @Input()
-    public type: ProgressBarType;
-
-    @Input()
     public value: number;
+
+    public ngOnInit(): void {
+        const TYPES: any = {
+            success: "success",
+            danger: "danger",
+            warning: "warning"
+        };
+
+        this.type = (this.value < 60) ? TYPES.success : (this.value === 100) ? TYPES.danger : TYPES.warning;
+    }
 }

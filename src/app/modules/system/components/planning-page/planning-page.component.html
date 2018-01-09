@@ -1,5 +1,8 @@
 <article class="planning-page">
     <ak-layout-page title="Страница планирования">
-        <ak-expenses></ak-expenses>
+        <ak-cssload *ngIf="loading; else expenses"></ak-cssload>
+        <ng-template #expenses>
+            <ak-expenses [bill]="bill" [categories]="categories"></ak-expenses>
+        </ng-template>
     </ak-layout-page>
 </article>
