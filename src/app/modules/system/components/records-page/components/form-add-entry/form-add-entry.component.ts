@@ -7,6 +7,8 @@ import {BillService} from "../../../../../../common/services/bill.service";
 import {CategoryModel} from "../../../../../../common/models/category.model";
 import {EntryModel} from "./entry.model";
 import {ENVIRONMENT} from "../../../../../../../config";
+import {ModalNotificationComponent} from "../../../../../../components/modal/components/modal-notification/modal-notification.component";
+import {ModalService} from "../../../../../../components/modal/modal.service";
 import {MoneyEventModel} from "../../../../../../common/models/money-event.model";
 import {MoneyEventService} from "../../../../../../common/services/money-event.service";
 
@@ -36,6 +38,7 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
     constructor(
         private billService: BillService,
         private fb: FormBuilder,
+        private modalService: ModalService,
         private moneyEventService: MoneyEventService
     ) {}
 
@@ -90,9 +93,14 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
 
                 if (type === ENVIRONMENT.typeEntries.outcome) {
                     if (amount > bill.value) {
-                        //TODO: add notification
                         let message: string = `На счету недостаточно средств. Вам нехватает - ${amount - bill.value}`;
-                        alert(message);
+
+                        this.modalService.open({
+                            component: ModalNotificationComponent,
+                            context: {
+                                message: message
+                            }
+                        });
 
                         this.loading = false;
 
@@ -116,8 +124,14 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
 
                         this.subscriptionAddEvent = this.moneyEventService.addEvent(event)
                             .subscribe(() => {
-                                //TODO: add notification
-                                alert("всё добавилось");
+                                let message: string = "Событие успешно добавленно";
+
+                                this.modalService.open({
+                                    component: ModalNotificationComponent,
+                                    context: {
+                                        message: message
+                                    }
+                                });
                             });
 
                         this.loading = false;
