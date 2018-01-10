@@ -1,12 +1,15 @@
 <article class="history-page">
     <ak-layout-page title="Страница истории">
-        <div class="history-page__layout">
-            <div class="history-page__column">
-                <ak-history-chart></ak-history-chart>
+        <ak-cssload *ngIf="loading; else content"></ak-cssload>
+        <ng-template #content>
+            <div class="history-page__layout">
+                <div class="history-page__column">
+                    <ak-history-chart [data]="chartData"></ak-history-chart>
+                </div>
+                <div class="history-page__column">
+                    <ak-history-events></ak-history-events>
+                </div>
             </div>
-            <div class="history-page__column">
-                <ak-list-activities></ak-list-activities>
-            </div>
-        </div>
+        </ng-template>
     </ak-layout-page>
 </article>

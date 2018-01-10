@@ -1,4 +1,5 @@
 import {NgModule} from "@angular/core";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 import {AccountComponent} from "./components/bill-page/components/account/account.component";
 import {BillPageComponent} from "./components/bill-page/bill-page.component";
@@ -11,9 +12,9 @@ import {FormAddCategoryComponent} from "./components/records-page/components/for
 import {FormAddEntryComponent} from "./components/records-page/components/form-add-entry/form-add-entry.component";
 import {FormEditCategoryComponent} from "./components/records-page/components/form-edit-category/form-edit-category.component";
 import {HistoryChartComponent} from "./components/history-page/components/history-chart/history-chart.component";
+import {HistoryEventsComponent} from "./components/history-page/components/history-events/history-events.component";
 import {HistoryPageComponent} from "./components/history-page/history-page.component";
 import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
-import {ListActivitiesComponent} from "./components/history-page/components/list-activities/list-activities.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
 import {MoneyEventService} from "../../common/services/money-event.service";
 import {PlanningPageComponent} from "./components/planning-page/planning-page.component";
@@ -25,6 +26,7 @@ import {SystemRoutingModule} from "./system-routing.module";
 
 @NgModule({
     imports: [
+        NgxChartsModule,
         SharedModule,
         SystemRoutingModule
     ],
@@ -38,9 +40,9 @@ import {SystemRoutingModule} from "./system-routing.module";
         FormAddEntryComponent,
         FormEditCategoryComponent,
         HistoryChartComponent,
+        HistoryEventsComponent,
         HistoryPageComponent,
         LayoutPageComponent,
-        ListActivitiesComponent,
         MainHeaderComponent,
         PlanningPageComponent,
         RecordsPageComponent,

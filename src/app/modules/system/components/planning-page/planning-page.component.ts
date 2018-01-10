@@ -6,7 +6,7 @@ import {BillModel} from "../../../../common/models/bill.model";
 import {BillService} from "../../../../common/services/bill.service";
 import {CategoriesService} from "../../../../common/services/categories.service";
 import {CategoryModel} from "../../../../common/models/category.model";
-import {ENVIRONMENT} from "../../../../../config";
+import {CategoryUtils} from "../../../../common/utils/category.utils";
 import {MoneyEventModel} from "../../../../common/models/money-event.model";
 import {MoneyEventService} from "../../../../common/services/money-event.service";
 
@@ -40,7 +40,7 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
 
             this.categories.forEach((item: CategoryModel) => {
                 item.cost = this.getCategoryCost(item);
-                item.costPercent = this.getPercent(item);
+                item.costPercent = this.getCategoryCostPercent(item);
                 item.remainder = item.limit - item.cost;
             });
 
@@ -55,16 +55,10 @@ export class PlanningPageComponent implements OnInit, OnDestroy {
     }
 
     public getCategoryCost(category: CategoryModel): number {
-        const categoryEvents: MoneyEventModel[] = this.moneyEvents.filter((event: MoneyEventModel) => {
-            return event.category === category.id && event.type === ENVIRONMENT.typeEntries.outcome;
-        });
-
-        return categoryEvents.reduce((total: number, event: MoneyEventModel) => {
-            return total + event.amount;
-        }, 0);
+        return CategoryUtils.getCategoryCost(category, this.moneyEvents);
     }
 
-    public getPercent(category: CategoryModel): number {
+    public getCategoryCostPercent(category: CategoryModel): number {
         const percent: number = (100 * category.cost) / category.limit;
 
         return (percent > 100) ? 100 : percent;

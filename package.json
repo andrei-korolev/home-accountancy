@@ -20,11 +20,12 @@
     "@angularclass/hmr-loader": "^3.0.2",
     "@ngx-translate/core": "^7.2.0",
     "@ngx-translate/http-loader": "^1.0.2",
+    "@swimlane/ngx-charts": "^7.0.1",
     "core-js": "^2.5.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.5.2",
-    "web-animations-js": "^2.3.1",
     "typescript": "2.4.2",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
