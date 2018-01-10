@@ -1,5 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Observable} from "rxjs/Observable";
 import {Subscription} from "rxjs/Subscription";
 
 import {BillModel} from "../../../../../../common/models/bill.model";
@@ -31,9 +32,8 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
     @Input()
     public categories: CategoryModel[] = [];
 
-    private subscriptionAddEvent: Subscription;
+    private subscriptionCombineLatest: Subscription;
     private subscriptionGetBill: Subscription;
-    private subscriptionUpdateBill: Subscription;
 
     constructor(
         private billService: BillService,
@@ -59,16 +59,12 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        if (this.subscriptionAddEvent) {
-            this.subscriptionAddEvent.unsubscribe();
-        }
-
         if (this.subscriptionGetBill) {
             this.subscriptionGetBill.unsubscribe();
         }
 
-        if (this.subscriptionUpdateBill) {
-            this.subscriptionUpdateBill.unsubscribe();
+        if (this.subscriptionCombineLatest) {
+            this.subscriptionCombineLatest.unsubscribe();
         }
     }
 
@@ -112,30 +108,28 @@ export class FormAddEntryComponent implements OnInit, OnDestroy {
                     value = bill.value + amount;
                 }
 
-                this.subscriptionUpdateBill = this.billService.updateBill(new BillModel(value, bill.currency))
-                //TODO: add mergeMap (billService.updateBill, moneyEventService.addEvent)
-                    .subscribe(() => {
-                        this.formAdd.setValue({
-                            amount: this.minValueLimit,
-                            category: null,
-                            description: "",
-                            type: ENVIRONMENT.typeEntries.outcome
-                        });
+                this.subscriptionCombineLatest = Observable.combineLatest(
+                    this.billService.updateBill(new BillModel(value, bill.currency)),
+                    this.moneyEventService.addEvent(event)
+                ).subscribe(() => {
+                    let message: string = "Событие успешно добавленно";
 
-                        this.subscriptionAddEvent = this.moneyEventService.addEvent(event)
-                            .subscribe(() => {
-                                let message: string = "Событие успешно добавленно";
-
-                                this.modalService.open({
-                                    component: ModalNotificationComponent,
-                                    context: {
-                                        message: message
-                                    }
-                                });
-                            });
-
-                        this.loading = false;
+                    this.formAdd.setValue({
+                        amount: this.minValueLimit,
+                        category: null,
+                        description: "",
+                        type: ENVIRONMENT.typeEntries.outcome
                     });
+
+                    this.modalService.open({
+                        component: ModalNotificationComponent,
+                        context: {
+                            message: message
+                        }
+                    });
+
+                    this.loading = false;
+                });
             });
     }
 }
