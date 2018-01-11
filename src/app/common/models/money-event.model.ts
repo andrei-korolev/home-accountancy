@@ -5,6 +5,7 @@ export class MoneyEventModel {
         public date: string,
         public description: string,
         public type: string,
-        public id?: string
+        public id?: string,
+        public categoryName?: string
     ) {}
 }

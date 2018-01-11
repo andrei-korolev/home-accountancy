@@ -45,13 +45,16 @@
                     </div>
                 </div>
                 <div class="table__body">
-                    <div class="table__row">
-                        <div class="table__td">1</div>
-                        <div class="table__td">123</div>
-                        <div class="table__td">12.12.2017</div>
-                        <div class="table__td">Товары</div>
+                    <div *ngFor="let item of moneyEvents; let idx = index" class="table__row">
+                        <div class="table__td">{{idx + 1}}</div>
+                        <div class="table__td">{{item.amount | number:"1.2"}}</div>
+                        <div class="table__td">{{item.date | slice:0:10}}</div>
+                        <div class="table__td">{{item.categoryName}}</div>
                         <div class="table__td">
-                            <span class="tag _danger">расход</span>
+                            <span *ngIf="item.type === type.income; else outcome" class="tag">Доход</span>
+                            <ng-template #outcome>
+                                <span class="tag _danger">Расход</span>
+                            </ng-template>
                         </div>
                         <div class="table__td">
                             <a href="" class="link">Открыть</a>

@@ -1,3 +1,5 @@
+import {TypeEntriesModel} from "./app/common/models/type-entries.model";
+
 const ROUTES: any = {
     any: {
         path: "**"
@@ -46,7 +48,7 @@ const OUTSOURCING_SERVICES: any = {
     }
 };
 
-const TYPE_ENTRIES: any = {
+const TYPE_ENTRIES: TypeEntriesModel = {
     income: "income",
     outcome: "outcome"
 };
