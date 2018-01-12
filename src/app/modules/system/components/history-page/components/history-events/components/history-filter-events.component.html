@@ -1,0 +1,31 @@
+<div class="history-filter-events">
+    <div class="history-filter-events__search">
+        <label class="form-field">
+            <div class="form-field__field">
+                <div class="form-text">
+                    <input
+                        autofocus
+                        type="text"
+                        class="form-text__input"
+                        name="search-activities"
+                        placeholder="Поиск"
+                    >
+                </div>
+            </div>
+        </label>
+    </div>
+    <div class="history-filter-events__select">
+        <label class="form-field">
+            <div class="form-field__field">
+                <div class="form-select">
+                    <select
+                        name="select-field-activities"
+                        class="form-select__select"
+                    >
+                        <option *ngFor="let item of listFieldsEvent">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+        </label>
+    </div>
+</div>

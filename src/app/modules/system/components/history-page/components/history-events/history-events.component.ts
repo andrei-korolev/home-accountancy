@@ -10,6 +10,14 @@ import {TypeEntriesModel} from "../../../../../../common/models/type-entries.mod
     templateUrl: "./history-events.component.html"
 })
 export class HistoryEventsComponent implements OnInit {
+    public listFieldsEvent: string[] = [
+        "#",
+        "Сумма",
+        "Дата",
+        "Категория",
+        "Тип",
+        "Действие"
+    ];
     public type: TypeEntriesModel = ENVIRONMENT.typeEntries;
 
     @Input()

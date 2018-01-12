@@ -13,6 +13,7 @@ import {FormAddEntryComponent} from "./components/records-page/components/form-a
 import {FormEditCategoryComponent} from "./components/records-page/components/form-edit-category/form-edit-category.component";
 import {HistoryChartComponent} from "./components/history-page/components/history-chart/history-chart.component";
 import {HistoryEventsComponent} from "./components/history-page/components/history-events/history-events.component";
+import {HistoryFilterEventsComponent} from "./components/history-page/components/history-events/components/history-filter-events.component";
 import {HistoryPageComponent} from "./components/history-page/history-page.component";
 import {LayoutPageComponent} from "./components/layout-page/layout-page.component";
 import {MainHeaderComponent} from "./components/system/components/main-header/main-header.component";
@@ -41,6 +42,7 @@ import {SystemRoutingModule} from "./system-routing.module";
         FormEditCategoryComponent,
         HistoryChartComponent,
         HistoryEventsComponent,
+        HistoryFilterEventsComponent,
         HistoryPageComponent,
         LayoutPageComponent,
         MainHeaderComponent,
